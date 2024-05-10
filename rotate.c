@@ -510,9 +510,9 @@ morph(int winno, SHAPE* source, SHAPE* dest)
     {
 /* wheee.. fun with pointer math ... but will it work everywhere? */
 /* eh... what the hell, it works under Linux/GCC */
-      int base=(int)&(source->vertices[0]);
-      int facenum =(int) (source->faces[i]);
-      int sidenum= (facenum-base)/(sizeof(vertex_type));
+      intptr_t base=(intptr_t)&(source->vertices[0]);
+      intptr_t facenum =(intptr_t) (source->faces[i]);
+      intptr_t sidenum= (facenum-base)/(sizeof(vertex_type));
       temp.faces[i]= &temp.vertices[sidenum];
     }
     for(i=0;i<dest->numVert;i++)
