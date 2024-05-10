@@ -11,6 +11,7 @@
 #include <X11/Xutil.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 #include "trippy.h"
 #include "lmath.h"

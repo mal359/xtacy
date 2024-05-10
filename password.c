@@ -50,6 +50,7 @@ extern char    *password;
 #define SECURE_PASSWD
 #endif
 #include <unistd.h>
+#include <string.h>
 
 int
 matchesPassword (char *guess, int allowroot)
