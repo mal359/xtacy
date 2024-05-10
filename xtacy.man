@@ -1,0 +1,428 @@
+1.\" -*- nroff -*-
+.de TQ
+.br
+.ns
+.TP \\$1
+..
+.\" Like TP, but if specified indent is more than half
+.\" the current line-length - indent, use the default indent.
+.de Tp
+.ie \\n(.$=0:((0\\$1)*2u>(\\n(.lu-\\n(.iu)) .TP
+.el .TP "\\$1"
+..
+.TH XTACY 1 "15 December 1998" "Xtacy Version 1.14"
+.SH NAME
+xtacy \- an X11 trippy color\-cycling toy
+.SH SYNOPSIS
+.B xtacy
+[
+.BI \- option
+\|.\|.\|.
+]
+.SH DESCRIPTION
+.B xtacy
+generates trippy patterns in an X window and cycles the color
+palette. Without any arguments,
+.B xtacy
+will open a window and display a random effect.
+.SH OPTIONS
+.TP
+.B \-annoy
+Turn on the Zoomy Close Window thing.
+.TP
+.BI \-bw\  width
+Border Width. Specifies the
+.I width
+of the border around your window, in pixels.
+.TP
+.BI \-delay\  msec
+Delay
+.I msec
+microseconds between loops.
+.TP
+.BI \-display\  displayname
+Opens the
+.B xtacy
+window on the
+.I displayname
+display.
+.TP
+.BI \-geometry\  geom
+Opens the
+.B xtacy
+window with
+.I geom
+geometry.
+.TP
+.B \-h
+Print out a help message.
+.TP
+.B \-lock
+Lock the window. When given the
+.B \-lock
+flag,
+.B xtacy
+prompts you for a key, then locks the window until the key is entered
+again. There is no true security guaranteed by this option.
+.TP
+.B \-mirror
+Mirrors the pattern on the window
+.TP
+.B \-norect
+Used in conjunction with
+.B \-kaleid
+to turn off everything but the lines.
+.TP
+.BI \-number\  num
+Used in conjunction with different effect options to specify special
+qualities of the effect. See the effect options below.
+.TP
+.BI \-opt\ num
+Also used like
+.B \-number
+to feed a secondary option into
+.B xtacy
+.TP
+.BI \-part\  num
+Used in conjunction with
+.B \-gravity
+to specify the number of roaming particles.
+.TP
+.B \-r
+.TQ
+.B \-root
+Run
+.B xtacy
+in the root window.
+.TP
+.B \-rillybig
+Run
+.B xtacy
+in a really big window (1024x860).
+.TP
+.B \-trell
+Used in conjunction with
+.B \-plasma
+to put it in Trellace mode.
+.TP
+.BI \-windows\  n
+Tell
+.B xtacy
+to open
+.I n
+windows for itself.
+.SH COLOR OPTIONS
+.TP
+.BI \-bd\  color
+Set the border color of the
+.B xtacy
+window to
+.IR color .
+.TP
+.BI \-bg\  color
+Set the background color of the
+.B xtacy
+window to
+.IR color .
+.TP
+.B \-mono
+Run with a greyscale palette.
+.TP
+.B \-multi
+Rotates the color map on most effect modes.
+.TP
+.B \-few
+Use only 18 colors.
+.TP
+.B \-several
+Use 72 colors.
+.TP
+.BI \-colors\  num
+Try to use
+.I num
+colors.
+.TP
+.B \-rand
+.TQ
+.B \-randomcolor
+Scramble the colormap.
+.TP
+.B \-perfect
+Use a private colormap. This will let
+.B xtacy
+have perfect colors when the cursor is in that window, but will do
+funky things to the rest of the screen.
+.TP
+.BI \-pal\  num|filename
+Uses predefined palette
+.IR num :
+.IP
+.BR 0 :
+Default RYGCBM, rotating straight.
+.br
+.BR 1 :
+Three bands (red, green, and blue), each of which can rotate
+independantly.
+.br
+.BR 2 :
+Like palette
+.B 1
+but in greyscale.
+.br
+.BR 3 :
+Chooses 2 random colors and interpolates between them.
+.br
+.BR 4 :
+Starts with a greyscale palette, drops in a random color and smoothes
+around it.
+.br
+.BR 5 :
+Chooses 3 random colors and interpolates between them.
+
+you can also specify a Palette File, which is just a text file
+with R-G-B triples ranging from 0 to 255.  A few demonstration
+palette files are included in the Xtacy distribution, in the
+palette directory.
+
+.SH EFFECT OPTIONS
+.TP
+.B \-bez
+Bouncing Bezier curves. The
+.B \-number
+option specifies how many curves to display.
+.TP
+.B \-boxes
+Bouncing boxes. The
+.B \-number
+option specifies how many boxes to display.
+.TP
+.B \-bozo
+Bouncing quadrilaterals (bozogons). The
+.B \-number
+option specifies how many bozos to display.
+.TP
+.B \-circ
+Bouncing circles. The
+.B \-number
+option specifies how many circles to display.
+.TP
+.B \-qix
+Qix. The
+.B \-number
+option specifies how many qix lines to display.
+.TP
+.B \-qix4
+Four qix lines, mirrored on each other. The
+.B \-number
+option specifies how many qix lines to display.
+.TP
+.B -blur
+starts with randomly placed boxes, and then blurs the edges between them.
+.TP
+.B \-cells
+Tile floor, cells of rotating color. The
+.B \-number
+option specifies how many cells on a row.
+.TP
+.B \-clover
+Lines rotating around a center point.
+.TP
+.B \-cube
+A spinning wire-frame cube. You may want to push up the delay to slow
+this down on a fast system.
+.TP
+.B \-dcurve
+plots the colors based on the distance to the curve(s)
+.TP
+.B \-dline
+plots colors based on the distance to the line(s)
+.TP
+.B \-dog
+DogPlasma mode. The
+.B \-number
+option sets the graininess.
+.TP
+.B \-field
+Displays e-fields between random points of random
+intensity. The
+.B \-number
+option specifies how many points to display.
+.TP
+.B \-flush
+starts with randomly drawn boxes, and moves them towards the center of the window
+.TP
+.B \-fracrect
+ever decreasing squares-within-squares
+.TP
+.B \-funky
+Shapes spiraling down to the center point. The
+.B \-number
+option sets the shape:
+.IP
+.BR 0 :
+A straight line.
+.br
+.BR 1 :
+A square.
+.br
+.BR 2 :
+A triangle.
+.TP
+.B \-gravity
+Gravity well simulator. The
+.B \-part
+option sets the number of roaming particles and the
+.B \-number
+option sets the number of wells.
+.TP
+.B \-julia
+Julia set fractal. The
+.B \-number
+option sets the number of iterations.
+.TP
+.B \-kaleid
+Kaleidascope. The
+.B \-norect
+option turns off everything but the lines.
+.TP
+.B \-life
+Conway's game of life. The
+.B \-number
+option sets the starting density.
+.TP
+.B \-lunch
+A reminder to go eat in the middle of the day
+.TP
+.B \-mandel
+Mandelbrot set fractal. The
+.B \-number
+option sets the number of iterations.
+.TP
+.B \-max
+Max Headroom's background  (Max not included)
+.TP
+.B \-newton
+Newton root fractal. The
+.B \-number
+option sets the number of iterations.
+.TP
+.B \-mixer
+Display swirls of colors. The
+.B \-number
+option sets the width of the bands.
+.TP
+.B \-off
+Off the Air color test pattern.
+.TP
+.B \-plasma
+Plasma cloud. The
+.B \-number
+option sets the graininess of the cloud (higher is smoother) and the
+.B \-trell
+option puts it in Trellace mode, which started as a bug but looked
+neat enough to stay.
+.TP
+.B \-rose
+Phased sine waves 
+.TP
+.B \-spiral
+Draw a spiral.
+.TP
+.B \-star
+Starfield simulation. The
+.B \-number
+option determines the number of stars on the screen at a time.
+.TP
+.B \-static
+Draw static. Use
+.B \-mono
+to get black and white static.
+.TP
+.B \-swarm
+Draw a swarm of bees following a queen.
+.TP
+.B \-taffy
+A modified mixer mode. The
+.B \-number
+option sets the width of the bands.
+.TP
+.B \-tag
+sort of the reverse of
+.B \-swarm
+everyone avoids the leader, and the leader tries to tag the closest bee
+.TP
+.B \-test
+Display the colormap.
+.TP
+.B \-tunnel
+Display a tunnel.
+.TP
+.B \-wander
+Display a squiggly line, wandering around the screen.
+.SH MOUSE BUTTONS
+.P
+.TS
+tab(~),center,box;
+lb | lb
+l | l.
+Button Action~Description
+=
+Button 1 click~T{
+Rotates the colormap one pixel, except on:
+.br
+.BR \-gravity ,
+where it places a new particle,
+.br
+.BR \-wander ,
+where it moves the pixel, and
+.br
+.BR \-swarm ,
+where it moves the queen.
+T}
+_
+Button 2 click~Resets the window and redraws the effect\ \ \ 
+_
+Button 3 click~T{
+Closes the window. If it's the last window, exits the program. If the
+.B \-lock
+option is on, this brings up the keyhole window.
+T}
+.TE
+.SH AUTHOR
+Jer Johnson <jer@gweep.net>
+.SH ACKNOWLEDGMENTS
+This program is dedicated to The Fairest One.
+.PP
+Special Thanks to:
+.PP
+Daniel Cabeza Gras <bardo@clip.dia.fi.upm.es> for tweaking my spiral
+code, and for adding the cells and mixer modes.
+.PP
+Steve Richardson <prefect@gweep.net> for letting me use his
+computer as an FTP site, and for being a guinea pig. Oh, and for
+writing the taffy mode.
+.PP
+Andrew Petrarca <android@gweep.net> for tweaking my gravity
+and e-fields code.
+.PP
+Matt Cross <profesor@gweep.net> for the starback and tunnel code.
+.PP
+Raun Nohavitza <raunn@tamu.edu> for writing the manpage.
+.SH COPYRIGHT
+xtacy is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 2, or (at your option) any later
+version.
+.LP
+xtacy is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+for more details.
+.LP
+You should have received a copy of the GNU General Public License along
+with xtacy; see the file COPYING.  If not, write to the Free Software
+Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.
+.SH AVAILABILITY
+The most recent released version of xtacy is always available for
+anonymous ftp from sidehack.gweep.net in the directory
+pub/gweep_progs.

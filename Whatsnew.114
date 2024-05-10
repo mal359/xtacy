@@ -1,0 +1,18 @@
+Lightning
+
+Rotating Octohedrons and Tetrahedrons
+
+New Rose mode supplied by Noah Vawter (noahvawt@wpi.wpi.edu)
+
+Jim Finnis' math and waves code imported.. meaning new Ripple and Waves modes
+and new Fracrect mode
+
+16- and 24- bit colors work... they don't cycle, but they work
+
+smoother rotating
+
+palette files
+
+mirrors added to the frame modes (qix, bez, bozo, boxes, circ)
+
+Imakefile supplied by John GOTTS (jgotts@engin.umich.edu).  THANKS!

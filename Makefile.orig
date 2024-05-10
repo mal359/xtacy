@@ -1,0 +1,71 @@
+LIBS = -lm -lX11
+LIBFLAGS = -L/usr/X11/lib
+CC = gcc
+CFLAGS = -O2 -g -funroll-all-loops -pedantic -Wall
+OBJ = trippy.o xguts.o frame.o kaleid.o color.o plasma.o gravity.o life.o fields.o waves.o math.o starback.o bezier.o swarm.o rotate.o lightning.o tag.o password.o cursor.o blob.o mirrors.o rose.o lunch.o fractals.o modes.o
+
+xtacy: $(OBJ) vroot.h trippy.h
+	$(CC) $(CFLAGS) $(LIBFLAGS) $(OBJ) $(LIBS) -o xtacy
+trippy.o: trippy.c trippy.h
+	$(CC) $(CFLAGS) -c trippy.c
+xguts.o: xguts.c trippy.h
+	$(CC) $(CFLAGS) -c xguts.c
+plasma.o: plasma.c trippy.h
+	$(CC) $(CFLAGS) -c plasma.c
+frame.o: frame.c trippy.h
+	$(CC) $(CFLAGS) -c frame.c
+kaleid.o: kaleid.c trippy.h
+	$(CC) $(CFLAGS) -c kaleid.c
+color.o: color.c trippy.h
+	$(CC) $(CFLAGS) -c color.c
+gravity.o: gravity.c trippy.h
+	$(CC) $(CFLAGS) -c gravity.c
+fields.o: fields.c trippy.h
+	$(CC) $(CFLAGS) -c fields.c
+lightning.o: lightning.c trippy.h
+	$(CC) $(CFLAGS) -c lightning.c
+life.o: life.c trippy.h
+	$(CC) $(CFLAGS) -c life.c
+starback.o: starback.c trippy.h
+	$(CC) $(CFLAGS) -c starback.c
+bezier.o: bezier.c trippy.h
+	$(CC) $(CFLAGS) -c bezier.c
+swarm.o : swarm.c trippy.h
+	$(CC) $(CFLAGS) -c swarm.c
+blob.o : blob.c trippy.h
+	$(CC) $(CFLAGS) -c blob.c
+rose.o : rose.c trippy.h
+	$(CC) $(CFLAGS) -c rose.c
+rotate.o : rotate.c trippy.h
+	$(CC) $(CFLAGS) -c rotate.c
+math.o: math.c lmath.h
+	$(CC) $(CFLAGS) -c math.c
+fractals.o: fractals.c lmath.h
+	$(CC) $(CFLAGS) -c fractals.c
+modes.o: modes.c lmath.h
+	$(CC) $(CFLAGS) -c modes.c
+waves.o: waves.c trippy.h
+	$(CC) $(CFLAGS) -c waves.c
+tag.o: tag.c trippy.h
+	$(CC) $(CFLAGS) -c tag.c
+lunch.o: lunch.c trippy.h
+	$(CC) $(CFLAGS) -c lunch.c
+mirrors.o: mirrors.c trippy.h
+	$(CC) $(CFLAGS) -c mirrors.c
+password.o: password.c
+	$(CC) $(CFLAGS) -c password.c
+cursor.o: cursor.c
+	$(CC) $(CFLAGS) -c cursor.c
+
+tags:
+	etags trippy.c frame.c kaleid.c color.c plasma.c gravity.c fields.c starback.c life.c bezier.c swarm.c rotate.c lightning.c tag.c password.c blob.c xload.c rose.c
+
+clean:
+	rm *.o
+	rm xtacy
+	rm core
+
+install: xtacy
+	strip xtacy
+	cp xtacy /usr/local/bin/xtacy
+	chmod a+x /usr/local/bin/xtacy

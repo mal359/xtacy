@@ -1,0 +1,252 @@
+(ok, this is the cheesy plain text, no frills, not even much info doc file
+ for Xtacy.  If someone is stuck by a muse and wants to write up a better one,
+ I'd more than welcome it.  -jj)
+
+DEDICATED TO THE FAIREST ONE...
+
+
+First off, the output of Xtacy -h
+
+Xtacy Ver. 1.14 by Jer Johnson (jer@gweep.net)
+Usage: ./xtacy [-lotsa flags]
+ Used everywhere: [-annoy] [-delay <msec>]
+        [-cycles <numcycles>] [-display <displayname>] [-geometry <geomtry>]
+        [-lock] [-r|root] [-rillybig] [-windows <number>]
+ Color Options: [-mono] [-multi] [-few] [-several] [-colors <num>]
+        [-rand|randomcolor] [-perfect] [-pal {0|1|2|3|4|5}]
+ Neat Effects: [-bez] [-blur] [-boxes] [-bozo] [-cells] [-circ] [-clover]
+        [-cube] [-dcurve] [-dline] [-dog] [-field] [-flush] [-fracrect]
+        [-funky] [-gravity] [-julia] [-life] [-lunch] [-mandel] [-max]
+        [-mixer] [-off] [-plasma] [-qix] [-qix4] [-spiral] [-star] [-static]
+        [-sunrise] [-swarm] [-taffy] [-test] [-tunnel] [-wander]
+ With kaleid: [-norect]
+ With bez,boxes,bozo,circ,qix,qix4:[-number <number>]
+ With taffy,mixer: [-number <width of bands>]
+ With cells: [-number <number of rows>]
+ With life: [-number <density of cells>]
+ With mandel,julia: [-number <num of iterations>
+ With dogplasma,plasma: [-trell] [-number <number>] determines graniness.
+ With gravity: [-number <num Wells>] [-part <num Particles>]
+ With fields: [-number <num points>]
+ With funky: [-number <how funky>]
+
+and now...
+
+a bit of explanation.
+
+the mouse buttons:
+
+Left Button: rotates the colormap one step, except on:
+	     -gravity, where it places a new particle.
+	     -wander, where it moves the pixel
+	     -swarm, where it moves the queen
+
+Middle Button: Resets the window, redraws whatever it was doing.
+
+Right Button: Closes the window. If it's the last window, exits the program.
+		If the -lock option is on, this brings up the Keyhole Window
+
+the command line switches:
+
+Options:
+
+-annoy : turns on the Zoomy Close Window thing.  
+
+-bw : Border Width. Specifies the width of the border around your window,
+      in Pixels.
+
+-cycles : Instead of running forever, only runs through N times, then exits.
+	I've included this for those people who are using Xtacy to
+	test frame-buffer systems.
+
+-delay : Delay between loops, in Microseconds.
+
+-display : opens an Xtacy window on the given display
+
+-geometry : sets the geometry for the Xtacy window. in the form "XVALxYVAL"
+
+-lock : prompts you for a key, then locks the window until the key is entered
+	again. Caution: I don't guarantee the security of this. 
+
+-mirrors : In some modes, this will mirror the output to other
+	 parts of the window.  No, this isn't in the help screen,
+	 it's a special feature for you, the DOC Reader. :)
+
+-number :  These two send two numbers as parameters into the functions.
+-opt :     Use them to trigger different behaviours
+
+
+-r OR -root : Runs XTacy in the Root Window
+
+-rillybig: Runs XTacy in a really big window (1024x860)
+
+-windows: lets you specify the number of different windows Xtacy opens
+	  for itself.
+
+Color Options:
+
+-bd : lets you specify the border color of the Xtacy window
+
+-bg : lets you specify the background color of the Xtacy window
+
+-mono : runs with a greyscale palette
+
+-multi : rotates the colormap on most modes.
+
+-few : uses only 18 colors
+
+-several : uses 72 colors
+
+-colors : lets you specify how many colors to try for.
+
+-rand OR -randomcolor : scrambles the colormap
+
+-perfect : makes Xtacy very greedy about colors. You must have the cursor in 
+	   the Xtacy window to use those colors. This'll do funky things to
+	   the rest of the screen.
+
+-pal : lets you pick a palette. At the moment, there are 6.
+	palette 0: default RYGCBM. Rotating straight.
+	palette 1: 3 bands, 1 red, 1 green, 1 blue, each of which can rotate
+		   independantly
+	palette 2: grayscale. The red,green,and blue components can rotate
+		   independantly
+	palette 3: chooses 2 colors, and interpolates between them
+	palette 4: starts with a greyscale palette, then drops in a
+		   random color and smooths around it
+	palette 5: chooses 3 random colors, and interpolates them
+
+	you can also specify a Palette File, which is just a text file
+	with R-G-B triples ranging from 0 to 255.  A few demonstration
+	palette files are included in the Xtacy distribution, in the
+	palette directory.
+
+
+Different Modes:
+
+-bez :  Bouncing Bezier curves.
+
+-boxes : Bouncing Boxes
+
+-bozo : Bouncing Quadrilaterals (Bozogons <G>)
+
+-circ : Bouncing Circles. Kinda reminds me of Sesame Street
+
+-qix : Qix
+
+-qix4 : 4 Qixes, mirrored on each other.
+
+	with these 6, the option -number NUMBER will let you select how many
+	there are.
+
+-blur : starts with randomly placed boxes, and then blurs the edges
+      between them.
+
+-cells :  Tile floor, cells of rotating color.
+	-number sets the size
+
+-clover : Lines rotating around a center point
+
+-cube : a spinning wireframe cube
+	you may want to push up the delay to slow this down on
+	a fast system
+
+-dcurve : plots the colors based on the distance to the curve(s)
+
+-dline : plots colors based on the distance to the line(s)
+
+-dog   :  DogPlasma mode. 
+	-number sets the graininess.
+
+-field : Displays E-Fields between random points of random intensity.
+	-number sets the number of points
+
+-flush : starts with randomly drawn boxes, and moves them towards
+       the center of the window
+
+-fracrect : ever decreasing squares-within-squares
+
+-funky : Shapes spiraling down to the center point
+	-number lets you set the shape.
+	       0 is a straight line
+	       1 is a square
+	       2 is a triangle
+
+-gravity : Gravity Well simulator
+	-number sets the number of wells. -part set the number of roaming
+	particles
+
+-julia : Julia set fractal
+
+-kaleid : Kaleidascope.
+	-norect turns off everything but the lines.
+	(use the -mirrors <num> options with Kaleid, it looks
+	 neat! )
+
+-life  :  Conway's game of Life
+	-number sets the starting density
+
+-lunch :  A reminder to go eat in the middle of the day
+
+-mandel : Mandelbrot set fractal
+
+-max : Max Headroom's background  (Max not included)
+
+-newton : Newton root fractal
+	with these three, -number sets the number of iterations
+
+-mixer :  Displays swirls of colors.
+	-number sets the width of the bands (try -number 20)
+
+-off : Off the Air color test pattern
+
+-plasma : Plasma cloud
+	-number sets the graniness of the cloud (high number is smoother)
+	-trell puts it in Trellace mode, which started as a bug, but
+	looked neat enough to stay.
+	(also try the -mirror flag with this ) 
+
+-rose : Phased sine waves 
+
+-spiral : Draws a spiral
+
+-star : runs a Starfield pattern.
+	-number determines the number of stars onscreen at a time.
+	-opt 1 will make the stars follow the mouse pointer
+
+-static : draws static
+	use -mono to get Black and White static
+
+-sunrise :  umm.. kinda looks like the sunrise :)
+
+-swarm : draws a swarm of bees playing follow the leader.
+
+-taffy : a mod of the mixer mode
+	-number sets the width of the bands (try -number 20)
+
+-tag :  sort of the reverse of 'swarm'  everyone avoids the leader.
+     and the leader tries to tag the closest bee
+
+-test : Displays the colormap
+
+-tunnel : Displays a tunnel
+
+-wander : Displays a squiggly line, wandering around the screen.
+
+
+Special Thanks to:
+
+	Daniel Cabeza Gras (bardo@clip.dia.fi.upm.es) for tweaking
+        my spiral code, and for adding the cells and mixer modes.
+
+	Steve Richardson (prefect@gweep.net) for letting me
+	use his computer as an FTP site, and for being a guinea pig.
+	Oh, and for writing the taffy mode.
+
+	Andrew Petrarca	 (android@gweep.net) for tweaking
+	my gravity and E-fields code.
+
+	Matt Cross (profesor@gweep.net ) for the starback
+	and tunnel code.
+
+	Noah Vawter (shifty@gweep.net) for the Rose code.

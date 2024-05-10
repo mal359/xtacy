@@ -1,0 +1,36 @@
+What's new in Xtacy 1.13:
+
+New modes:
+	-cells  Cells of color.. looks like a tile floor
+
+	-mixer  Swirls of color
+
+	-taffy  Multi-colored stretched taffy
+
+	-dogplasma  A different mode, sort of like Plasma.
+		    Acidwarp 4.06 has a similar mode.
+
+	-bezier  Bouncing Bezier curves.
+
+	-swarm   Swarming bees, playing follow the leader
+
+	-cube  Spinning wireframe cube
+
+New palettes:
+
+	-pal 4  Starts as a greyscale, then drops random colors and
+		smooths out
+
+	-pal 5  interpolated between 3 random colors
+ 
+Bug fixes:
+
+	fixed a couple of memory leaks in generating some of the shapes.
+
+	the starback works now
+
+New Stuff:
+
+	running Xtacy with no arguments gives you a random mode
+	(not just -kaleid anymore).  Including some of the undocumented
+	modes.  I'd say what those where, but that would be documenting...

@@ -1,0 +1,16 @@
+
+Begin3
+Title: Xtacy         
+Version: 1.14       
+Entered-date: 15 December 1998
+Description: X11 Graphics Hack   
+Keywords: xtacy trippy graphics      
+Author: jer@gweep.net (Jer Johnson)
+Maintained-by:  jer@gweep.net (Jer Johnson)
+Primary-site: sunsite.unc.edu  /pub/linux/apps/graphics/hacks/X/
+		201888	xtacy114.tar.gz
+Alternate-site: sidehack.gweep.net /pub/gweep_progs
+Original-site: sidehack.gweep.net /pub/gweep_progs
+Platform: X11
+Copying-policy: GPL
+End

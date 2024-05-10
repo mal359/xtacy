@@ -1,0 +1,74 @@
+#!/usr/X11/bin/wish -f
+########################################################################
+# XTacy-Tk .3a                                (C) Andrew Hobgood, 1997 #
+#              A Front End to XTacy from Jer Johnson                   #
+#                       Written in Tcl/Tk                              #
+#                                                                      #
+# email: Andrew Hobgood, andrewh@wpi.edu                               #
+#        Jer Johnson, jer@sidehack.gweep.net                           #
+#                                                                      #
+# Distributed under the GNU Public License                             #
+########################################################################
+
+wm title . "XTacy-Tk .9a"
+
+set binary "./xtacy"
+
+set xtacymode {-plasma}
+set number 0
+set option -1
+set onroot 0
+
+#label .message -wraplength 5i -justify left -text "Select a mode from below."
+label .message -text "Select a mode from below."
+pack .message -side top -padx 1.5c
+
+frame .buttons
+pack .buttons -side bottom -fill x -pady 2m
+button .buttons.quit -text "Quit" -command "destroy ."
+button .buttons.run -text "Run" -command {runXtacy $binary $xtacymode $number $option $onroot}
+button .buttons.killall -text "Total XTacy Kill" -command {exec killall xtacy}
+pack .buttons.quit .buttons.run .buttons.killall -side left -expand 1
+
+frame .modeframe 
+pack .modeframe -side top
+
+frame .modeframe.mode1
+frame .modeframe.mode2
+frame .modeframe.mode3
+pack .modeframe.mode1 .modeframe.mode2 .modeframe.mode3 -side left
+
+foreach modes {Plasma Mixer Kaleid Bez Boxes Circ Qix Qix4 Sunrise Flush} {
+	set lower [string tolower $modes]
+	radiobutton .modeframe.mode1.$lower -text $modes -variable xtacymode -relief flat \
+		-value "-$lower"
+	pack .modeframe.mode1.$lower -side top -anchor w
+}
+foreach modes {Taffy Cells Life Mandel Julia DogPlasma Gravity Fields Rose Off} {
+	set lower [string tolower $modes]
+	radiobutton .modeframe.mode2.$lower -text $modes -variable xtacymode -relief flat \
+		-value "-$lower"
+	pack .modeframe.mode2.$lower -side top -anchor w
+}
+foreach modes {Funky Test Tunnel Wander Spiral Cube Stars Swarm Tag Fracrect} {
+	set lower [string tolower $modes]
+	radiobutton .modeframe.mode3.$lower -text $modes -variable xtacymode -relief flat \
+		-value "-$lower"
+	pack .modeframe.mode3.$lower -side top -anchor w
+}
+
+frame .options
+pack .options -side top
+label .options.tag -text "Number:   "
+entry .options.numvalue -relief sunken -width 5 -textvariable number
+label .options.optwin -text "Option:   "
+entry .options.optvalue -relief sunken -width 5 -textvariable option
+checkbutton .options.onroot -text "Root Window" -variable onroot -onvalue 1 -offvalue 0
+pack .options.tag .options.numvalue .options.optwin .options.optvalue .options.onroot -side left
+
+proc runXtacy {binary xtacymode number option onroot} {
+
+	if $onroot {exec $binary $xtacymode -root -number $number >/dev/null 2>/dev/null &} \
+		{exec $binary $xtacymode -number $number -opt $option >/dev/null 2>/dev/null &}
+}
+
