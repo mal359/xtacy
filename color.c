@@ -939,7 +939,7 @@ allocPhatColors()
   {
     fprintf(stderr,"Aieeee.. memory problem alloc'ing HC\n");
   }
-  for(i=0;i<=numcolors;i++)
+  for(i=0;i<numcolors;i++)
   {
     colors[i]=(long*)calloc(3,sizeof(long));
   }
