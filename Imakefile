@@ -1,7 +1,7 @@
 # Imakefile
 
 # For RedHat Linux , uncomment -lcrypt 
-LOCAL_LIBRARIES = $(XLIB) -lm # -lcrypt
+LOCAL_LIBRARIES = $(XLIB) -lm -lcrypt
 
 SRCS = bezier.c blob.c color.c cursor.c fields.c frame.c gravity.c\
 	kaleid.c life.c lightning.c lunch.c math.c password.c plasma.c\

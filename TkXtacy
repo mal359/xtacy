@@ -12,7 +12,7 @@
 
 wm title . "XTacy-Tk .9a"
 
-set binary "./xtacy"
+set binary "xtacy"
 
 set xtacymode {-plasma}
 set number 0
